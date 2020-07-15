@@ -10,6 +10,13 @@ export type Params = {
   [key: string]: any;
 };
 
+export type SendOptions = {
+  url: string; 
+  params: Params; 
+  callback: Function; 
+  extra?: any;
+}
+
 const defaultOptions: OptionsType = { } as OptionsType;
 
 /**
@@ -83,17 +90,19 @@ export default class Sender {
 
   /**
    * 策略模式，发送数据
-   * @param url 上报地址
-   * @param params 参数
-   * @param callback 回调
-   * @param extra 额外参数
+   * @param options 上传地址、参数等
    */
-  send(url: string, params: Params, callback: Function, extra?: any){
+  send({
+    url,
+    params,
+    callback,
+    ...rest
+  }: SendOptions){
     const paramsStr = stringify({ ...params });
     const realUrl = `${url}${paramsStr}`;
     SendStrategy[this.sendType](realUrl, callback, {
       ...this.options,
-      ...extra,
+      ...rest,
     });
   }
 }

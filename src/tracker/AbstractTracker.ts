@@ -1,5 +1,5 @@
 import Sender, { Params } from '../sender';
-import { OptionsType, OptsType } from "../types";
+import { OptionsType } from "../types";
 
 const defaultOptions: OptionsType = {
   sendType: "ajax"
@@ -56,6 +56,10 @@ export default class AbstractTracker {
    */
   send(params: Params, callback: Function){
     const basic = this.getBasicParams();
-    this.sender.send(this.options.url, { basic, ...params }, callback);
+    this.sender.send({
+      url: this.options.url, 
+      params: { basic, ...params }, 
+      callback
+    });
   }
 }
