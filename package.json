@@ -1,0 +1,24 @@
+{
+  "name": "sponge",
+  "version": "0.0.1",
+  "description": "library for event track",
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "authors": {
+    "name": "alfred",
+    "email": "sc941203@foxmail.com"
+  },
+  "repository": "/sponge",
+  "scripts": {
+    "dev": "father doc dev",
+    "build": "father build"
+  },
+  "peerDependencies": {
+    "react": "16.x"
+  },
+  "devDependencies": {
+    "father": "^2.16.0",
+    "typescript": "^3.3.3"
+  },
+  "license": "MIT"
+}
